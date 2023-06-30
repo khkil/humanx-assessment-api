@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 public class MemberResponseDto {
-
     @Data
     @AllArgsConstructor
     public static class Summary {

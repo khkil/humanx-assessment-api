@@ -13,22 +13,22 @@ import java.util.TimeZone;
 public class AppConfig {
 
     @PostConstruct
-    void started(){
+    void started() {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
 
     @Bean
-	public ModelMapper modelMapper(){
+    public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration()
                 .setSkipNullEnabled(true)
                 .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE)
                 .setFieldMatchingEnabled(true);
-		return modelMapper;
-	}
+        return modelMapper;
+    }
 
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
