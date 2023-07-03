@@ -1,6 +1,6 @@
 package com.octagnosis.security.jwt;
 
-import com.octagnosis.api.member.domain.MemberRole;
+import com.octagnosis.api.member.domain.RoleEnum;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -17,7 +17,7 @@ public class JwtTokenUtil {
     private final long ACCESS_TOKEN_EXPIRE_TIME = 3600000; // 1 hour
     private final long REFRESH_TOKEN_EXPIRE_TIME = 3600000 * 24; // 1 day
 
-    private String createToken(String username, MemberRole role, long expiration) {
+    private String createToken(String username, RoleEnum role, long expiration) {
         Date now = new Date();
         Date validity = new Date(now.getTime() + expiration);
 
@@ -36,11 +36,11 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    public String createAccessToken(String username, MemberRole role) {
+    public String createAccessToken(String username, RoleEnum role) {
         return createToken(username, role, ACCESS_TOKEN_EXPIRE_TIME);
     }
 
-    public String createRefreshToken(String username, MemberRole role) {
+    public String createRefreshToken(String username, RoleEnum role) {
         return createToken(username, role, REFRESH_TOKEN_EXPIRE_TIME);
     }
 

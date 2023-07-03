@@ -1,6 +1,6 @@
 package com.octagnosis.security;
 
-import com.octagnosis.api.member.domain.MemberRole;
+import com.octagnosis.api.member.domain.RoleEnum;
 import com.octagnosis.api.member.service.MemberService;
 import com.octagnosis.security.cookie.CookieUtil;
 import com.octagnosis.security.jwt.JwtAuthenticationEntryPoint;
@@ -47,7 +47,7 @@ public class WebSecurityConfig {
                         .requestMatchers(AUTH_WHITE_LIST)
                         .permitAll()
                         .requestMatchers(AUTH_ADMIN_LIST)
-                        .hasAuthority(MemberRole.ADMIN.getRole())
+                        .hasAuthority(RoleEnum.ADMIN.getRole())
                         .anyRequest()
                         .authenticated())
                 .addFilterBefore(new JwtTokenFilter(memberService, jwtTokenUtil, cookieUtil), UsernamePasswordAuthenticationFilter.class)

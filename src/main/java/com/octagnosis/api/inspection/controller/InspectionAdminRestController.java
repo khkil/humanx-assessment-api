@@ -18,8 +18,8 @@ public class InspectionAdminRestController {
     InspectionService inspectionService;
 
     @PostMapping
-    public ResponseEntity<ApiResponse<?>> saveInspection(@RequestBody InspectionDto.Request inspection) {
-        inspectionService.saveInspection(inspection);
+    public ResponseEntity<ApiResponse<?>> createInspection(@RequestBody InspectionDto.Request inspection) {
+        inspectionService.createInspection(inspection);
         return ResponseEntity.ok(ApiResponse.createSuccess());
     }
 }

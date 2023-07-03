@@ -1,8 +1,10 @@
 package com.octagnosis.api.member.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,22 +15,23 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-@Data
+@Getter
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @DynamicUpdate
-public class Member implements UserDetails{
+public class Member implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Convert(converter = MemberRoleConverter.class)
-    private MemberRole role;
+    @Convert(converter = RoleEnumConverter.class)
+    private RoleEnum role;
 
     private Integer groupIdx;
 
+    @Column(unique = true)
     private String account;
 
     private String password;
@@ -57,18 +60,18 @@ public class Member implements UserDetails{
 
     private String jobDetail;
 
-    @Column(name = "c_date", nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false)
     @CreationTimestamp
     private Date createdDate;
 
     private String modifiedDate;
 
-    private boolean deleted;
+    private boolean isDeleted;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collect = new ArrayList<>();
-        if(role != null){
+        if (role != null) {
             collect.add(new SimpleGrantedAuthority(role.getRole()));
         }
         return collect;

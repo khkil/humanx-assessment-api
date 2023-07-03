@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -21,12 +20,12 @@ public class AuthController {
 
     @RequestMapping("/login")
     public ResponseEntity<ApiResponse<JwtTokenDto>> login(@RequestBody MemberRequestDto memberRequestDto) {
-        JwtTokenDto jwtTokenDto =  authService.login(memberRequestDto.getAccount(), memberRequestDto.getPassword());
+        JwtTokenDto jwtTokenDto = authService.login(memberRequestDto.getAccount(), memberRequestDto.getPassword());
         return ResponseEntity.ok(ApiResponse.createSuccess(jwtTokenDto));
     }
 
     @RequestMapping("/sign-up")
-    public ResponseEntity signUp(@RequestBody MemberRequestDto memberRequestDto) {
+    public ResponseEntity<ApiResponse<Member>> signUp(@RequestBody MemberRequestDto memberRequestDto) {
         Member member = authService.signUp(memberRequestDto);
         return ResponseEntity.ok(ApiResponse.createSuccess(member));
     }

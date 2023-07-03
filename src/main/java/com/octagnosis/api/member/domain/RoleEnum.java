@@ -5,15 +5,14 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum MemberRole {
+public enum RoleEnum {
     USER("ROLE_USER", "회원"),
     ADMIN("ROLE_ADMIN", "관리자");
 
+    private final String role;
+    private final String desc;
 
-    private String role;
-    private String desc;
-
-    public String getRole(){
+    public String getRole() {
         return this.role;
     }
 }

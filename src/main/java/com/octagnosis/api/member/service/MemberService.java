@@ -35,7 +35,7 @@ public class MemberService implements UserDetailsService {
         return memberList.stream().map(member -> modelMapper.map(member, MemberResponseDto.Summary.class)).collect(Collectors.toList());
     }
 
-    public boolean checkPassword(String inputPassword, String memberPassword){
+    public boolean checkPassword(String inputPassword, String memberPassword) {
         return passwordEncoder.matches(inputPassword, memberPassword);
     }
 }

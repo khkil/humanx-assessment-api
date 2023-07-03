@@ -23,7 +23,7 @@ public class InspectionService {
         return inspectionList.stream().map((element) -> modelMapper.map(element, InspectionDto.Response.class)).collect(Collectors.toList());
     }
 
-    public void saveInspection(InspectionDto.Request inspectionDto) {
+    public void createInspection(InspectionDto.Request inspectionDto) {
         Inspection inspection = modelMapper.map(inspectionDto, Inspection.class);
         inspectionRepository.save(inspection);
     }
