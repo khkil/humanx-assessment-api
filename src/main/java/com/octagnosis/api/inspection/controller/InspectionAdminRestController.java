@@ -20,6 +20,6 @@ public class InspectionAdminRestController {
     @PostMapping
     public ResponseEntity<ApiResponse<?>> createInspection(@RequestBody InspectionDto.Request inspection) {
         inspectionService.createInspection(inspection);
-        return ResponseEntity.ok(ApiResponse.createSuccess());
+        return ResponseEntity.ok(ApiResponse.createSuccessWithNoContent());
     }
 }

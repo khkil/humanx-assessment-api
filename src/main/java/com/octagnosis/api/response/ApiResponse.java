@@ -23,10 +23,6 @@ public class ApiResponse<T> {
     private T data;
     private String message;
 
-    public static <T> ApiResponse<T> createSuccess() {
-        return new ApiResponse<>(SUCCESS_STATUS, null, null);
-    }
-
     public static <T> ApiResponse<T> createSuccess(T data) {
         return new ApiResponse<>(SUCCESS_STATUS, data, null);
     }
