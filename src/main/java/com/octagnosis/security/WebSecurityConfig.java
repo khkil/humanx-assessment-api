@@ -29,7 +29,7 @@ public class WebSecurityConfig {
     CookieUtil cookieUtil;
 
     private static final String[] AUTH_WHITE_LIST = {
-            "/api/auth/**", "/api/inspections/**"
+            "/api/auth/**", "/api/tests/**"
     };
     private static final String[] AUTH_ADMIN_LIST = {
             "/api/admin/**"

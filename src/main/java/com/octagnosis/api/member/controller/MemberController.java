@@ -1,6 +1,6 @@
 package com.octagnosis.api.member.controller;
 
-import com.octagnosis.api.member.dto.MemberResponseDto;
+import com.octagnosis.api.member.dto.MemberDto;
 import com.octagnosis.api.member.service.MemberService;
 import com.octagnosis.api.response.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,8 @@ public class MemberController {
     MemberService memberService;
 
     @GetMapping("")
-    public ResponseEntity getMemberList() {
-        List<MemberResponseDto.Summary> memberList = memberService.findAll();
+    public ResponseEntity<ApiResponse<List<MemberDto.Response>>> getMemberList() {
+        List<MemberDto.Response> memberList = memberService.findAll();
         return ResponseEntity.ok(ApiResponse.createSuccess(memberList));
     }
 

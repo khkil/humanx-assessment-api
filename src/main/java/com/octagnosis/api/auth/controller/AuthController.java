@@ -3,7 +3,8 @@ package com.octagnosis.api.auth.controller;
 import com.octagnosis.api.auth.dto.JwtTokenDto;
 import com.octagnosis.api.auth.service.AuthService;
 import com.octagnosis.api.member.domain.Member;
-import com.octagnosis.api.member.dto.MemberRequestDto;
+import com.octagnosis.api.member.dto.MemberLoginDto;
+import com.octagnosis.api.member.dto.MemberSignupDto;
 import com.octagnosis.api.response.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +20,14 @@ public class AuthController {
     AuthService authService;
 
     @RequestMapping("/login")
-    public ResponseEntity<ApiResponse<JwtTokenDto>> login(@RequestBody MemberRequestDto memberRequestDto) {
-        JwtTokenDto jwtTokenDto = authService.login(memberRequestDto.getAccount(), memberRequestDto.getPassword());
+    public ResponseEntity<ApiResponse<JwtTokenDto>> login(@RequestBody MemberLoginDto.Request memberLoginDto) {
+        JwtTokenDto jwtTokenDto = authService.login(memberLoginDto.getAccount(), memberLoginDto.getPassword());
         return ResponseEntity.ok(ApiResponse.createSuccess(jwtTokenDto));
     }
 
     @RequestMapping("/sign-up")
-    public ResponseEntity<ApiResponse<Member>> signUp(@RequestBody MemberRequestDto memberRequestDto) {
-        Member member = authService.signUp(memberRequestDto);
+    public ResponseEntity<ApiResponse<Member>> signUp(@RequestBody MemberSignupDto.Request memberSignupDto) {
+        Member member = authService.signUp(memberSignupDto);
         return ResponseEntity.ok(ApiResponse.createSuccess(member));
     }
 }

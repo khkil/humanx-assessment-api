@@ -1,8 +1,8 @@
 package com.octagnosis.api.result.domain;
 
 import com.octagnosis.api.contents.domain.Contents;
-import com.octagnosis.api.inspection.domain.Inspection;
 import com.octagnosis.api.question.domain.Question;
+import com.octagnosis.api.test.domain.Test;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -16,7 +16,7 @@ public class Result {
     private Long id;
     private String resultName;
     @ManyToOne
-    private Inspection inspection;
+    private Test test;
 
     @OneToMany(mappedBy = "result")
     private List<Question> questionList;

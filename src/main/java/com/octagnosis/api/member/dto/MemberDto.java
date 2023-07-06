@@ -3,10 +3,11 @@ package com.octagnosis.api.member.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class MemberResponseDto {
+public class MemberDto {
+
     @Data
     @AllArgsConstructor
-    public static class Summary {
+    public static class Response {
         private Long id;
         private String account;
     }

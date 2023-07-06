@@ -1,4 +1,4 @@
-package com.octagnosis.api.inspection.dto;
+package com.octagnosis.api.test.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Data
-public class InspectionDto {
+public class TestDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Data
     public static class Request {
-        private String inspectionName;
+        private String testName;
     }
 
     @AllArgsConstructor
@@ -19,7 +19,7 @@ public class InspectionDto {
     @Data
     public static class Response {
         private Long id;
-        private String inspectionName;
+        private String testName;
         private boolean isShow;
     }
 }

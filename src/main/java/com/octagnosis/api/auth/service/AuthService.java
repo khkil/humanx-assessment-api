@@ -3,7 +3,7 @@ package com.octagnosis.api.auth.service;
 import com.octagnosis.api.auth.dto.JwtTokenDto;
 import com.octagnosis.api.member.domain.Member;
 import com.octagnosis.api.member.domain.RoleEnum;
-import com.octagnosis.api.member.dto.MemberRequestDto;
+import com.octagnosis.api.member.dto.MemberSignupDto;
 import com.octagnosis.api.member.repository.MemberRepository;
 import com.octagnosis.api.member.service.MemberService;
 import com.octagnosis.security.cookie.CookieUtil;
@@ -45,10 +45,10 @@ public class AuthService {
         return new JwtTokenDto(accessToken);
     }
 
-    public Member signUp(MemberRequestDto memberRequestDto) {
-        MemberRequestDto memberDto = MemberRequestDto.builder()
-                .account(memberRequestDto.getAccount())
-                .password(passwordEncoder.encode(memberRequestDto.getPassword()))
+    public Member signUp(MemberSignupDto.Request memberSignupDto) {
+        MemberSignupDto.Request memberDto = MemberSignupDto.Request.builder()
+                .account(memberSignupDto.getAccount())
+                .password(passwordEncoder.encode(memberSignupDto.getPassword()))
                 .role(RoleEnum.USER) // 회원가입은 USER 권한
                 /*.groupIdx(member.getGroupIdx())
                 .name(member.getName())

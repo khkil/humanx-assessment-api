@@ -1,4 +1,4 @@
-package com.octagnosis.api.inspection.domain;
+package com.octagnosis.api.test.domain;
 
 import com.octagnosis.api.result.domain.Result;
 import jakarta.persistence.*;
@@ -6,14 +6,14 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Inspection {
+public class Test {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
-    private String inspectionName;
+    private String testName;
     private boolean isShow;
-    @OneToMany(mappedBy = "inspection")
+    @OneToMany(mappedBy = "test")
     List<Result> resultList;
 }
