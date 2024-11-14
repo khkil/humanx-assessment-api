@@ -1,7 +1,7 @@
-package com.octagnosis.api.member.controller;
+package com.octagnosis.api.user.controller;
 
-import com.octagnosis.api.member.dto.MemberDto;
-import com.octagnosis.api.member.service.MemberService;
+import com.octagnosis.api.user.dto.MemberDto;
+import com.octagnosis.api.user.service.MemberService;
 import com.octagnosis.api.response.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

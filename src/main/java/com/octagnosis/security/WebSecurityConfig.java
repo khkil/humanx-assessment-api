@@ -1,7 +1,7 @@
 package com.octagnosis.security;
 
-import com.octagnosis.api.member.domain.RoleEnum;
-import com.octagnosis.api.member.service.MemberService;
+import com.octagnosis.api.user.domain.RoleEnum;
+import com.octagnosis.api.user.service.MemberService;
 import com.octagnosis.security.cookie.CookieUtil;
 import com.octagnosis.security.jwt.JwtAuthenticationEntryPoint;
 import com.octagnosis.security.jwt.JwtTokenFilter;

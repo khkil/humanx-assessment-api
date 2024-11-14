@@ -1,4 +1,4 @@
-package com.octagnosis.api.member.dto;
+package com.octagnosis.api.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

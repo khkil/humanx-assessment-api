@@ -1,8 +1,8 @@
-package com.octagnosis.api.member.service;
+package com.octagnosis.api.user.service;
 
-import com.octagnosis.api.member.domain.Member;
-import com.octagnosis.api.member.dto.MemberDto;
-import com.octagnosis.api.member.repository.MemberRepository;
+import com.octagnosis.api.user.domain.Member;
+import com.octagnosis.api.user.dto.MemberDto;
+import com.octagnosis.api.user.repository.MemberRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

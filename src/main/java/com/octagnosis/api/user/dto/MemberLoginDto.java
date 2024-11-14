@@ -1,6 +1,6 @@
-package com.octagnosis.api.member.dto;
+package com.octagnosis.api.user.dto;
 
-import com.octagnosis.api.member.domain.RoleEnum;
+import com.octagnosis.api.user.domain.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

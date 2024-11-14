@@ -2,9 +2,9 @@ package com.octagnosis.api.auth.controller;
 
 import com.octagnosis.api.auth.dto.JwtTokenDto;
 import com.octagnosis.api.auth.service.AuthService;
-import com.octagnosis.api.member.domain.Member;
-import com.octagnosis.api.member.dto.MemberLoginDto;
-import com.octagnosis.api.member.dto.MemberSignupDto;
+import com.octagnosis.api.user.domain.Member;
+import com.octagnosis.api.user.dto.MemberLoginDto;
+import com.octagnosis.api.user.dto.MemberSignupDto;
 import com.octagnosis.api.response.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

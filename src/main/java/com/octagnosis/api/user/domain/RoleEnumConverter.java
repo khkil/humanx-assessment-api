@@ -1,4 +1,4 @@
-package com.octagnosis.api.member.domain;
+package com.octagnosis.api.user.domain;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

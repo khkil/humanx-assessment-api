@@ -1,4 +1,4 @@
-package com.octagnosis.api.member.domain;
+package com.octagnosis.api.user.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
