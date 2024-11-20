@@ -12,7 +12,7 @@ import java.util.List;
 public class PrivacyTermsService {
     private final PrivacyTermsRepository privacyTermsRepository;
 
-    public List<PrivacyTerms> getTermsList() {
+    public List<PrivacyTerms> getPrivacyTerms() {
         return privacyTermsRepository.findAll();
     }
 }

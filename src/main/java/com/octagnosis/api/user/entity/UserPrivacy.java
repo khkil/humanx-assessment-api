@@ -27,7 +27,4 @@ public class UserPrivacy {
     @ManyToOne
     @JoinColumn(name = "userIdx")
     private User user;
-
-    @OneToMany(mappedBy = "userPrivacy")
-    List<UserPrivacyTermsAgreement> userPrivacyTermsAgreements;
 }

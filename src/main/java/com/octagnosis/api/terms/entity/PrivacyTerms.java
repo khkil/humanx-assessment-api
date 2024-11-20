@@ -1,10 +1,14 @@
 package com.octagnosis.api.terms.entity;
 
+import com.octagnosis.api.user.entity.UserPrivacyTermsAgreement;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,5 +22,8 @@ public class PrivacyTerms {
 
     private String termsContent;
 
-    private Boolean required;
+    private Boolean isRequired;
+
+    @OneToMany(mappedBy = "privacyTerms")
+    List<UserPrivacyTermsAgreement> userPrivacyTermsAgreements;
 }
