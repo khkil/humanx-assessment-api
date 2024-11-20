@@ -1,11 +1,11 @@
 package com.octagnosis.api.auth.service;
 
 import com.octagnosis.api.auth.dto.JwtTokenDto;
-import com.octagnosis.api.user.domain.Member;
-import com.octagnosis.api.user.domain.RoleEnum;
+import com.octagnosis.api.user.entity.Member;
+import com.octagnosis.api.user.entity.RoleEnum;
 import com.octagnosis.api.user.dto.MemberSignupDto;
 import com.octagnosis.api.user.repository.MemberRepository;
-import com.octagnosis.api.user.service.MemberService;
+import com.octagnosis.api.user.service.UserService;
 import com.octagnosis.security.cookie.CookieUtil;
 import com.octagnosis.security.jwt.JwtTokenUtil;
 import org.modelmapper.ModelMapper;
@@ -26,14 +26,14 @@ public class AuthService {
     @Autowired
     CookieUtil cookieUtil;
     @Autowired
-    MemberService memberService;
+    UserService userService;
     @Autowired
     MemberRepository memberRepository;
 
     public JwtTokenDto login(String account, String password) {
 
-        Member member = (Member) memberService.loadUserByUsername(account);
-        if (!memberService.checkPassword(password, member.getPassword())) {
+        Member member = (Member) userService.loadUserByUsername(account);
+        if (!userService.checkPassword(password, member.getPassword())) {
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
         }
 

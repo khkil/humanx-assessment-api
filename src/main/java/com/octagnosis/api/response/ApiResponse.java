@@ -28,7 +28,7 @@ public class ApiResponse<T> {
     }
 
     public static ApiResponse<?> createSuccessWithNoContent() {
-        return new ApiResponse<>(SUCCESS_STATUS, null, null);
+        return new ApiResponse<>(SUCCESS_STATUS, null, "정상적으로 처리되었습니다.");
     }
 
     public static ApiResponse<?> createFail(BindingResult bindingResult) {

@@ -1,4 +1,4 @@
-package com.octagnosis.api.user.domain;
+package com.octagnosis.api.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

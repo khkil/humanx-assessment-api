@@ -1,13 +1,13 @@
 package com.octagnosis.security;
 
-import com.octagnosis.api.user.domain.RoleEnum;
-import com.octagnosis.api.user.service.MemberService;
+import com.octagnosis.api.user.entity.RoleEnum;
+import com.octagnosis.api.user.service.UserService;
 import com.octagnosis.security.cookie.CookieUtil;
 import com.octagnosis.security.jwt.JwtAuthenticationEntryPoint;
 import com.octagnosis.security.jwt.JwtTokenFilter;
 import com.octagnosis.security.jwt.JwtTokenUtil;
 import jakarta.servlet.DispatcherType;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,19 +17,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    @Autowired
-    JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    @Autowired
-    MemberService memberService;
-    @Autowired
-    JwtTokenUtil jwtTokenUtil;
-    @Autowired
-    CookieUtil cookieUtil;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final UserService userService;
+    private final JwtTokenUtil jwtTokenUtil;
+    private final CookieUtil cookieUtil;
 
     private static final String[] AUTH_WHITE_LIST = {
-            "/api/auth/**", "/api/tests/**"
+            "/api/auth/**", "/api/tests/**", "/api/v2/**"
     };
     private static final String[] AUTH_ADMIN_LIST = {
             "/api/admin/**"
@@ -50,7 +47,7 @@ public class WebSecurityConfig {
                         .hasAuthority(RoleEnum.ADMIN.getRole())
                         .anyRequest()
                         .authenticated())
-                .addFilterBefore(new JwtTokenFilter(memberService, jwtTokenUtil, cookieUtil), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtTokenFilter(userService, jwtTokenUtil, cookieUtil), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 }

@@ -2,7 +2,7 @@ package com.octagnosis.api.auth.controller;
 
 import com.octagnosis.api.auth.dto.JwtTokenDto;
 import com.octagnosis.api.auth.service.AuthService;
-import com.octagnosis.api.user.domain.Member;
+import com.octagnosis.api.user.entity.Member;
 import com.octagnosis.api.user.dto.MemberLoginDto;
 import com.octagnosis.api.user.dto.MemberSignupDto;
 import com.octagnosis.api.response.ApiResponse;
