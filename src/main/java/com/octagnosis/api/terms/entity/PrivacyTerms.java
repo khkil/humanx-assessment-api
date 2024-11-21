@@ -1,7 +1,9 @@
 package com.octagnosis.api.terms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.octagnosis.api.user.entity.UserPrivacyTermsAgreement;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -24,6 +26,7 @@ public class PrivacyTerms {
 
     private Boolean isRequired;
 
-    @OneToMany(mappedBy = "privacyTerms")
+    @OneToMany(mappedBy = "privacyTerms", fetch = FetchType.LAZY)
+    @JsonIgnore
     List<UserPrivacyTermsAgreement> userPrivacyTermsAgreements;
 }

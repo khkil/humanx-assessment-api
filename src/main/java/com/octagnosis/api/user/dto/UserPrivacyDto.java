@@ -17,7 +17,7 @@ public class UserPrivacyDto {
 
         @Data
         public static class TermsAgreement {
-            private Long privacyIdx;
+            private Long termsIdx;
             private Boolean isAgreed;
         }
     }

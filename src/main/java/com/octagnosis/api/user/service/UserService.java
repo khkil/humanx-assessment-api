@@ -57,7 +57,7 @@ public class UserService implements UserDetailsService {
                         .builder()
                         .user(user)
                         .isAgreed(v.getIsAgreed())
-                        .privacyTerms(privacyTermsRepository.getReferenceById(v.getPrivacyIdx()))
+                        .privacyTerms(privacyTermsRepository.getReferenceById(v.getTermsIdx()))
                         .agreementDate(LocalDateTime.now())
                         .build()
         ).toList();
