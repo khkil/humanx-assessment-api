@@ -1,15 +1,14 @@
-package com.octagnosis.api.user.service;
+package com.octagnosis.api.users.service;
 
-import com.octagnosis.api.terms.entity.PrivacyTerms;
 import com.octagnosis.api.terms.repository.PrivacyTermsRepository;
-import com.octagnosis.api.user.entity.User;
-import com.octagnosis.api.user.entity.UserPrivacy;
-import com.octagnosis.api.user.dto.UserPrivacyDto;
-import com.octagnosis.api.user.entity.UserPrivacyTermsAgreement;
-import com.octagnosis.api.user.repository.MemberRepository;
-import com.octagnosis.api.user.repository.UserPrivacyRepository;
-import com.octagnosis.api.user.repository.UserPrivacyTermsAgreementRepository;
-import com.octagnosis.api.user.repository.UserRepository;
+import com.octagnosis.api.users.entity.User;
+import com.octagnosis.api.users.entity.UserPrivacy;
+import com.octagnosis.api.users.dto.UserPrivacyDto;
+import com.octagnosis.api.users.entity.UserPrivacyTermsAgreement;
+import com.octagnosis.api.users.repository.MemberRepository;
+import com.octagnosis.api.users.repository.UserPrivacyRepository;
+import com.octagnosis.api.users.repository.UserPrivacyTermsAgreementRepository;
+import com.octagnosis.api.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

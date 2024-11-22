@@ -1,11 +1,11 @@
 package com.octagnosis.api.auth.service;
 
 import com.octagnosis.api.auth.dto.JwtTokenDto;
-import com.octagnosis.api.user.entity.Member;
-import com.octagnosis.api.user.entity.RoleEnum;
-import com.octagnosis.api.user.dto.MemberSignupDto;
-import com.octagnosis.api.user.repository.MemberRepository;
-import com.octagnosis.api.user.service.UserService;
+import com.octagnosis.api.users.entity.Member;
+import com.octagnosis.api.users.entity.RoleEnum;
+import com.octagnosis.api.users.dto.MemberSignupDto;
+import com.octagnosis.api.users.repository.MemberRepository;
+import com.octagnosis.api.users.service.UserService;
 import com.octagnosis.security.cookie.CookieUtil;
 import com.octagnosis.security.jwt.JwtTokenUtil;
 import org.modelmapper.ModelMapper;

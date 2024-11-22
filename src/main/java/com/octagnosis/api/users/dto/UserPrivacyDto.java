@@ -1,4 +1,4 @@
-package com.octagnosis.api.user.dto;
+package com.octagnosis.api.users.dto;
 
 import lombok.Data;
 

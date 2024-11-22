@@ -1,15 +1,12 @@
-package com.octagnosis.api.user.controller;
+package com.octagnosis.api.users.controller;
 
-import com.octagnosis.api.user.dto.MemberDto;
-import com.octagnosis.api.user.dto.UserPrivacyDto;
-import com.octagnosis.api.user.service.UserService;
+import com.octagnosis.api.users.dto.MemberDto;
+import com.octagnosis.api.users.dto.UserPrivacyDto;
+import com.octagnosis.api.users.service.UserService;
 import com.octagnosis.api.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v2/users")

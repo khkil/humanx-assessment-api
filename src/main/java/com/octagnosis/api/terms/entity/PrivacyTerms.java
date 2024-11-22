@@ -1,7 +1,7 @@
 package com.octagnosis.api.terms.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.octagnosis.api.user.entity.UserPrivacyTermsAgreement;
+import com.octagnosis.api.users.entity.UserPrivacyTermsAgreement;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;

@@ -1,6 +1,6 @@
-package com.octagnosis.api.user.repository;
+package com.octagnosis.api.users.repository;
 
-import com.octagnosis.api.user.entity.Member;
+import com.octagnosis.api.users.entity.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

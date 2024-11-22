@@ -1,4 +1,4 @@
-package com.octagnosis.api.user.entity;
+package com.octagnosis.api.users.entity;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

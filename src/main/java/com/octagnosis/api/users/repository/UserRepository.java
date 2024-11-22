@@ -1,6 +1,6 @@
-package com.octagnosis.api.user.repository;
+package com.octagnosis.api.users.repository;
 
-import com.octagnosis.api.user.entity.User;
+import com.octagnosis.api.users.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

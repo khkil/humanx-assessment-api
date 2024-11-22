@@ -1,11 +1,9 @@
-package com.octagnosis.api.user.entity;
+package com.octagnosis.api.users.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Builder

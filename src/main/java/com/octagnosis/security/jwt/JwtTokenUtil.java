@@ -1,6 +1,6 @@
 package com.octagnosis.security.jwt;
 
-import com.octagnosis.api.user.entity.RoleEnum;
+import com.octagnosis.api.users.entity.RoleEnum;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
