@@ -1,9 +1,8 @@
 package com.octagnosis.api.users.controller;
 
-import com.octagnosis.api.users.dto.MemberDto;
+import com.octagnosis.api.response.ApiResponse;
 import com.octagnosis.api.users.dto.UserPrivacyDto;
 import com.octagnosis.api.users.service.UserService;
-import com.octagnosis.api.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
