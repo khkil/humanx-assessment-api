@@ -20,4 +20,10 @@ public class AssessmentController {
         Long userCount = assessmentService.getAssessmentUserCount(id);
         return ResponseEntity.ok(ApiResponse.createSuccess(userCount));
     }
+
+    @GetMapping("/{id}/users/{userId}/result")
+    public ResponseEntity<?> getAssessmentUserResult(@PathVariable Long id) {
+        Long userCount = assessmentService.getAssessmentUserCount(id);
+        return ResponseEntity.ok(ApiResponse.createSuccess(userCount));
+    }
 }

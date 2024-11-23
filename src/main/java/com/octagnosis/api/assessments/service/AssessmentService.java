@@ -16,4 +16,6 @@ public class AssessmentService {
         Assessment assessment = assessmentRepository.getReferenceById(id);
         return userRepository.countUserByAssessment(assessment);
     }
+
+
 }
