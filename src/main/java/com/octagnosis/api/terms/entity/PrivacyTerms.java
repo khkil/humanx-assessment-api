@@ -2,10 +2,7 @@ package com.octagnosis.api.terms.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.octagnosis.api.users.entity.UserPrivacyTermsAgreement;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +19,7 @@ public class PrivacyTerms {
 
     private String termsName;
 
+    @Column(columnDefinition = "LONGTEXT")
     private String termsContent;
 
     private Boolean isRequired;

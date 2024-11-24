@@ -6,6 +6,8 @@ import com.octagnosis.api.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AssessmentService {
@@ -17,5 +19,7 @@ public class AssessmentService {
         return userRepository.countUserByAssessment(assessment);
     }
 
-
+    public List<Assessment> getAllAssessments() {
+        return assessmentRepository.findAll();
+    }
 }

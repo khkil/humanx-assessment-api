@@ -1,5 +1,6 @@
 package com.octagnosis.api.assessments.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.octagnosis.api.users.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,5 +27,6 @@ public class Assessment {
     private Boolean isUsed;
 
     @OneToMany
+    @JsonIgnore
     List<User> users;
 }
