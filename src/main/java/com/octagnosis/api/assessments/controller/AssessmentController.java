@@ -1,5 +1,6 @@
 package com.octagnosis.api.assessments.controller;
 
+import com.octagnosis.api.assessments.dto.AssessmentUserResultDto;
 import com.octagnosis.api.assessments.service.AssessmentService;
 import com.octagnosis.api.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v2/assessments")
@@ -23,7 +26,7 @@ public class AssessmentController {
 
     @GetMapping("/{assessmentId}/users/{userId}/result")
     public ResponseEntity<?> getAssessmentUserResult(@PathVariable Long assessmentId, @PathVariable Long userId) {
-        Long userCount = assessmentService.getAssessmentUserCount(assessmentId);
-        return ResponseEntity.ok(ApiResponse.createSuccess(userCount));
+        List<AssessmentUserResultDto> userResults = assessmentService.getUserResults(assessmentId, userId);
+        return ResponseEntity.ok(ApiResponse.createSuccess(userResults));
     }
 }

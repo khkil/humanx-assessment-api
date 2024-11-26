@@ -26,6 +26,10 @@ public class AssessmentQuestion {
 
     private Boolean isDeleted;
 
+    @OneToMany(mappedBy = "question")
+    @JsonIgnore
+    List<AssessmentAnswer> answers;
+
     @ManyToOne
     @JoinColumn(name = "assessment_id")
     private Assessment assessment;
