@@ -26,7 +26,15 @@ public class Assessment {
 
     private Boolean isUsed;
 
-    @OneToMany
+    @OneToMany(mappedBy = "assessment")
     @JsonIgnore
-    List<User> users;
+    private List<User> users;
+
+    @OneToMany(mappedBy = "assessment")
+    @JsonIgnore
+    private List<AssessmentQuestion> assessmentQuestionList;
+
+    @OneToMany(mappedBy = "assessment")
+    @JsonIgnore
+    private List<AssessmentResult> assessmentResultList;
 }

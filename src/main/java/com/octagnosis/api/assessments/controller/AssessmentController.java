@@ -21,9 +21,9 @@ public class AssessmentController {
         return ResponseEntity.ok(ApiResponse.createSuccess(userCount));
     }
 
-    @GetMapping("/{id}/users/{userId}/result")
-    public ResponseEntity<?> getAssessmentUserResult(@PathVariable Long id) {
-        Long userCount = assessmentService.getAssessmentUserCount(id);
+    @GetMapping("/{assessmentId}/users/{userId}/result")
+    public ResponseEntity<?> getAssessmentUserResult(@PathVariable Long assessmentId, @PathVariable Long userId) {
+        Long userCount = assessmentService.getAssessmentUserCount(assessmentId);
         return ResponseEntity.ok(ApiResponse.createSuccess(userCount));
     }
 }

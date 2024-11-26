@@ -22,4 +22,5 @@ public class AssessmentService {
     public List<Assessment> getAllAssessments() {
         return assessmentRepository.findAll();
     }
+
 }
