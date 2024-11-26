@@ -13,11 +13,11 @@ import java.util.List;
 @Builder
 public class AssessmentUserResultDto {
     private Long resultId;
-    private Long resultName;
+    private String resultName;
     private List<Content> contents;
 
     @QueryProjection
-    public AssessmentUserResultDto(Long resultId, Long resultName, List<Content> contents) {
+    public AssessmentUserResultDto(Long resultId, String resultName, List<Content> contents) {
         this.resultId = resultId;
         this.resultName = resultName;
         this.contents = contents;
