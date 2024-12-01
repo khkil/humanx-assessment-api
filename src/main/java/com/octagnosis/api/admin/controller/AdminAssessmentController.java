@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/assessments")
+@RequestMapping("/api/admin/assessments")
 @RequiredArgsConstructor
 public class AdminAssessmentController {
     private final AssessmentService assessmentService;

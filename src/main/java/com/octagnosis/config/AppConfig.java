@@ -26,9 +26,4 @@ public class AppConfig {
                 .setFieldMatchingEnabled(true);
         return modelMapper;
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

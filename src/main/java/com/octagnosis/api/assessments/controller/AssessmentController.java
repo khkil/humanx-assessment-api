@@ -1,5 +1,6 @@
 package com.octagnosis.api.assessments.controller;
 
+import com.octagnosis.api.assessments.dto.AssessmentDetailDto;
 import com.octagnosis.api.assessments.dto.AssessmentUserResultDto;
 import com.octagnosis.api.assessments.service.AssessmentService;
 import com.octagnosis.api.response.ApiResponse;
@@ -17,6 +18,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AssessmentController {
     private final AssessmentService assessmentService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getAssessmentDetail(@PathVariable Long id) {
+        AssessmentDetailDto assessmentDetail = assessmentService.getAssessmentDetail(id);
+        return ResponseEntity.ok(ApiResponse.createSuccess(assessmentDetail));
+    }
 
     @GetMapping("/{id}/users/count")
     public ResponseEntity<?> getAssessmentUserCounts(@PathVariable Long id) {
