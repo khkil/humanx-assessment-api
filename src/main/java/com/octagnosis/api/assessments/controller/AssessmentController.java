@@ -2,6 +2,7 @@ package com.octagnosis.api.assessments.controller;
 
 import com.octagnosis.api.assessments.dto.AssessmentDetailDto;
 import com.octagnosis.api.assessments.dto.AssessmentUserResultDto;
+import com.octagnosis.api.assessments.dto.PagedQuestionListDto;
 import com.octagnosis.api.assessments.service.AssessmentService;
 import com.octagnosis.api.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,12 @@ public class AssessmentController {
     public ResponseEntity<?> getAssessmentUserCounts(@PathVariable Long id) {
         Long userCount = assessmentService.getAssessmentUserCount(id);
         return ResponseEntity.ok(ApiResponse.createSuccess(userCount));
+    }
+
+    @GetMapping("/{id}/questions/page/{page}")
+    public ResponseEntity<?> getAssessmentQuestions(@PathVariable Long id, @PathVariable int page) {
+        List<PagedQuestionListDto> pagedQuestions = assessmentService.getPagedAssessmentQuestions(id, page);
+        return ResponseEntity.ok(ApiResponse.createSuccess(pagedQuestions));
     }
 
     @GetMapping("/{assessmentId}/users/{userId}/result")
