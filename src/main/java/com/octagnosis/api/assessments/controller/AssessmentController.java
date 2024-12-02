@@ -32,7 +32,7 @@ public class AssessmentController {
         return ResponseEntity.ok(ApiResponse.createSuccess(userCount));
     }
 
-    @GetMapping("/{id}/questions/page/{page}")
+    @GetMapping("/{id}/questions/pages/{page}")
     public ResponseEntity<?> getAssessmentQuestions(@PathVariable Long id, @PathVariable int page) {
         List<PagedQuestionListDto> pagedQuestions = assessmentService.getPagedAssessmentQuestions(id, page);
         return ResponseEntity.ok(ApiResponse.createSuccess(pagedQuestions));
