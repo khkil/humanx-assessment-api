@@ -38,9 +38,11 @@ dependencies {
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
+    implementation 'com.querydsl:querydsl-sql:5.0.0'
+
     //P6spy
     implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0")
-    
+
     implementation 'org.apache.velocity:velocity:1.7'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     compileOnly 'org.projectlombok:lombok'

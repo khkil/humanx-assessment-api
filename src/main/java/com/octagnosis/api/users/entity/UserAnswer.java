@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Entity
 @IdClass(UserAnswer.UserAnswerKey.class)
 @Getter
+@Table(name = "user_answer")
 public class UserAnswer {
     @Id
     @JoinColumn(name = "user_idx")

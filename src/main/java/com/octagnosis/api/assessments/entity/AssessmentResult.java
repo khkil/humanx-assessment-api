@@ -17,12 +17,12 @@ public class AssessmentResult {
 
     private String resultName;
 
+    @ManyToOne
+    private Assessment assessment;
+
     @OneToMany(mappedBy = "assessmentResult")
     List<AssessmentResultContent> resultContentList;
 
     @OneToMany(mappedBy = "assessmentResult")
     List<AssessmentQuestion> questionList;
-
-    @ManyToOne
-    private Assessment assessment;
 }

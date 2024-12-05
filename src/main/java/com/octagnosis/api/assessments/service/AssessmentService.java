@@ -32,8 +32,7 @@ public class AssessmentService {
     }
 
     public Long getAssessmentUserCount(Long id) {
-        Assessment assessment = assessmentRepository.getReferenceById(id);
-        return userRepository.countUserByAssessment(assessment);
+        return userRepository.countByAssessmentId(id);
     }
 
     public List<Assessment> getAllAssessments() {

@@ -13,9 +13,11 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "assessment_question")
 public class AssessmentQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "question_id")
     private Long questionId;
 
     private String questionTitle;

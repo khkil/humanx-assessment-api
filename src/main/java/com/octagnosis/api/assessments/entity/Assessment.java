@@ -28,10 +28,6 @@ public class Assessment {
 
     @OneToMany(mappedBy = "assessment")
     @JsonIgnore
-    private List<User> users;
-
-    @OneToMany(mappedBy = "assessment")
-    @JsonIgnore
     private List<AssessmentQuestion> assessmentQuestionList;
 
     @OneToMany(mappedBy = "assessment")
