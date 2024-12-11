@@ -1,7 +1,12 @@
 package com.octagnosis.api.users.service;
 
+import com.octagnosis.api.assessments.entity.AssessmentQuestion;
+import com.octagnosis.api.assessments.repository.AssessmentAnswerRepository;
+import com.octagnosis.api.assessments.repository.AssessmentQuestionRepository;
 import com.octagnosis.api.terms.repository.PrivacyTermsRepository;
+import com.octagnosis.api.users.dto.UserRegisterDto;
 import com.octagnosis.api.users.entity.User;
+import com.octagnosis.api.users.entity.UserAnswer;
 import com.octagnosis.api.users.entity.UserPrivacy;
 import com.octagnosis.api.users.dto.UserPrivacyDto;
 import com.octagnosis.api.users.entity.UserPrivacyTermsAgreement;
@@ -29,11 +34,38 @@ public class UserService implements UserDetailsService {
     private final UserPrivacyRepository userPrivacyRepository;
     private final UserPrivacyTermsAgreementRepository userPrivacyTermsAgreementRepository;
     private final PrivacyTermsRepository privacyTermsRepository;
+    private final AssessmentQuestionRepository assessmentQuestionRepository;
+    private final AssessmentAnswerRepository assessmentAnswerRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return memberRepository.findByAccount(username).orElseThrow(() -> new UsernameNotFoundException("일치하는 회원이 없습니다."));
+    }
+
+    @Transactional
+    public UserRegisterDto.Response registerUser(UserRegisterDto.Request userRegisterDto) {
+        List<UserAnswer> userAnswers = userRegisterDto.getUserAnswers().stream().map(v -> UserAnswer
+                .builder()
+                .question(assessmentQuestionRepository.getReferenceById(v.getQuestionId()))
+                .answer(assessmentAnswerRepository.getReferenceById(v.getAnswerId()))
+                .build()
+        ).toList();
+        
+        User user = userRepository.save(User
+                .builder()
+                .userName(userRegisterDto.getUserName())
+                .userEmail(userRegisterDto.getUserEmail())
+                .userBirth(userRegisterDto.getUserBirth())
+                .userPhone(userRegisterDto.getUserPhone())
+                .userAnswers(userAnswers)
+                .build()
+        );
+
+        return UserRegisterDto.Response
+                .builder()
+                .userIdx(user.getUserIdx())
+                .build();
     }
 
     @Transactional
@@ -64,6 +96,7 @@ public class UserService implements UserDetailsService {
         userPrivacyTermsAgreementRepository.saveAll(termsAgreements);
 
     }
+
 
     public boolean checkPassword(String inputPassword, String memberPassword) {
         return passwordEncoder.matches(inputPassword, memberPassword);

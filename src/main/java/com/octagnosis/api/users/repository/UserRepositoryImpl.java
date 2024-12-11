@@ -22,8 +22,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
     @Override
     public Long countByAssessmentId(Long assessmentId) {
-        String alias = "userAnswer";
-        StringPath subQueryAlias = Expressions.stringPath(alias);
+        StringPath subQueryAlias = Expressions.stringPath("userAnswer");
 
         NumberExpression<Long> userIdx = Expressions.numberPath(Long.class, subQueryAlias, "user_idx");
         NumberExpression<Long> questionIdx = Expressions.numberPath(Long.class, subQueryAlias, "question_idx");
@@ -31,8 +30,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         JPASQLQuery<?> jpaSqlQuery = new JPASQLQuery<>(entityManager, MySQLTemplates.DEFAULT);
         return jpaSqlQuery.select(user.userIdx.count())
                 .from(user)
-                .join(
-                        queryFactory.select(
+                .join(queryFactory
+                                .select(
                                         userIdx,
                                         questionIdx.min().as("question_idx")
                                 )

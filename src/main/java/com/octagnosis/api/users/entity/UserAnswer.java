@@ -4,10 +4,7 @@ import com.octagnosis.api.assessments.entity.AssessmentAnswer;
 import com.octagnosis.api.assessments.entity.AssessmentQuestion;
 import com.octagnosis.api.assessments.entity.AssessmentResult;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -15,6 +12,9 @@ import java.io.Serializable;
 @IdClass(UserAnswer.UserAnswerKey.class)
 @Getter
 @Table(name = "user_answer")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserAnswer {
     @Id
     @JoinColumn(name = "user_idx")
