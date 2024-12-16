@@ -27,7 +27,7 @@ public class User {
 
     private String userPhone;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<UserAnswer> userAnswers;
 
     @OneToMany(mappedBy = "user")

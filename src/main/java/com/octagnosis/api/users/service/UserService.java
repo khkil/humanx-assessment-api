@@ -1,6 +1,5 @@
 package com.octagnosis.api.users.service;
 
-import com.octagnosis.api.assessments.entity.AssessmentQuestion;
 import com.octagnosis.api.assessments.repository.AssessmentAnswerRepository;
 import com.octagnosis.api.assessments.repository.AssessmentQuestionRepository;
 import com.octagnosis.api.terms.repository.PrivacyTermsRepository;
@@ -10,10 +9,8 @@ import com.octagnosis.api.users.entity.UserAnswer;
 import com.octagnosis.api.users.entity.UserPrivacy;
 import com.octagnosis.api.users.dto.UserPrivacyDto;
 import com.octagnosis.api.users.entity.UserPrivacyTermsAgreement;
-import com.octagnosis.api.users.repository.MemberRepository;
-import com.octagnosis.api.users.repository.UserPrivacyRepository;
-import com.octagnosis.api.users.repository.UserPrivacyTermsAgreementRepository;
-import com.octagnosis.api.users.repository.UserRepository;
+import com.octagnosis.api.users.repository.*;
+import com.octagnosis.security.AesUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,12 +28,14 @@ import java.util.List;
 public class UserService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final UserRepository userRepository;
+    private final UserAnswerRepository userAnswerRepository;
     private final UserPrivacyRepository userPrivacyRepository;
     private final UserPrivacyTermsAgreementRepository userPrivacyTermsAgreementRepository;
     private final PrivacyTermsRepository privacyTermsRepository;
     private final AssessmentQuestionRepository assessmentQuestionRepository;
     private final AssessmentAnswerRepository assessmentAnswerRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AesUtil aesUtil;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -45,26 +44,29 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public UserRegisterDto.Response registerUser(UserRegisterDto.Request userRegisterDto) {
-        List<UserAnswer> userAnswers = userRegisterDto.getUserAnswers().stream().map(v -> UserAnswer
-                .builder()
-                .question(assessmentQuestionRepository.getReferenceById(v.getQuestionId()))
-                .answer(assessmentAnswerRepository.getReferenceById(v.getAnswerId()))
-                .build()
-        ).toList();
-        
+
         User user = userRepository.save(User
                 .builder()
                 .userName(userRegisterDto.getUserName())
                 .userEmail(userRegisterDto.getUserEmail())
                 .userBirth(userRegisterDto.getUserBirth())
                 .userPhone(userRegisterDto.getUserPhone())
-                .userAnswers(userAnswers)
                 .build()
         );
 
+        List<UserAnswer> userAnswers = userRegisterDto.getUserAnswers().stream().map(v -> UserAnswer
+                .builder()
+                .question(assessmentQuestionRepository.getReferenceById(v.getQuestionId()))
+                .answer(assessmentAnswerRepository.getReferenceById(v.getAnswerId()))
+                .user(user)
+                .build()
+        ).toList();
+
+        userAnswerRepository.saveAll(userAnswers);
+
         return UserRegisterDto.Response
                 .builder()
-                .userIdx(user.getUserIdx())
+                .encryptedUserId(aesUtil.encrypt(user.getUserIdx().toString()))
                 .build();
     }
 

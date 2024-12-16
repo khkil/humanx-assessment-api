@@ -22,7 +22,8 @@ public class UserController {
     }
 
     @PostMapping("")
-    public ResponseEntity<UserRegisterDto.Response> saveUser(@RequestBody UserRegisterDto.Request user) {
-        return ResponseEntity.ok(userService.registerUser(user));
+    public ResponseEntity<ApiResponse<?>> saveUser(@RequestBody UserRegisterDto.Request user) {
+        UserRegisterDto.Response response = userService.registerUser(user);
+        return ResponseEntity.ok(ApiResponse.createSuccess(response));
     }
 }

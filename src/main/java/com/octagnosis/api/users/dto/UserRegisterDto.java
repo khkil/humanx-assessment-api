@@ -40,6 +40,6 @@ public class UserRegisterDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Response {
-        private Long userIdx;
+        private String encryptedUserId;
     }
 }
