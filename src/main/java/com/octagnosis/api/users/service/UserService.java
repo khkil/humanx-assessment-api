@@ -10,7 +10,7 @@ import com.octagnosis.api.users.entity.UserPrivacy;
 import com.octagnosis.api.users.dto.UserPrivacyDto;
 import com.octagnosis.api.users.entity.UserPrivacyTermsAgreement;
 import com.octagnosis.api.users.repository.*;
-import com.octagnosis.security.AesUtil;
+import com.octagnosis.util.AesUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -10,25 +10,25 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class CookieUtil {
-    public Cookie createCookie(String cookieName, String value, int maxAge, String path){
-        Cookie token = new Cookie(cookieName,value);
+    public Cookie createCookie(String cookieName, String value, int maxAge, String path) {
+        Cookie token = new Cookie(cookieName, value);
         token.setHttpOnly(true);
         token.setMaxAge(maxAge);
         token.setPath(path);
         return token;
     }
 
-    public Cookie getCookie(HttpServletRequest req, String cookieName){
+    public Cookie getCookie(HttpServletRequest req, String cookieName) {
         final Cookie[] cookies = req.getCookies();
-        if (cookies==null) return null;
-        for(Cookie cookie : cookies){
+        if (cookies == null) return null;
+        for (Cookie cookie : cookies) {
             if (cookie.getName().equals(cookieName))
                 return cookie;
         }
         return null;
     }
 
-    public void setCookie(HttpServletResponse response, Cookie cookie){
+    public void setCookie(HttpServletResponse response, Cookie cookie) {
         response.addCookie(cookie);
     }
 }

@@ -1,5 +1,6 @@
 package com.octagnosis.api.response;
 
+import com.octagnosis.exception.CommonError;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -48,6 +49,11 @@ public class ApiResponse<T> {
     public static ApiResponse<?> createError(String message) {
         return new ApiResponse<>(ERROR_STATUS, null, message);
     }
+
+    public static ApiResponse<?> createError(CommonError error, String message) {
+        return new ApiResponse<>(error.getCode(), null, message);
+    }
+
 
     private ApiResponse(String status, T data, String message) {
         this.status = status;

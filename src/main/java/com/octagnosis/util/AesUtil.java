@@ -1,4 +1,4 @@
-package com.octagnosis.security;
+package com.octagnosis.util;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.encrypt.AesBytesEncryptor;
