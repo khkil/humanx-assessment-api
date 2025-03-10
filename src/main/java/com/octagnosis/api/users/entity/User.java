@@ -27,6 +27,8 @@ public class User {
 
     private String userPhone;
 
+    private Long inspectionIdx;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<UserAnswer> userAnswers;
 

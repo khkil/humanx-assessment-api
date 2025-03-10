@@ -99,6 +99,10 @@ public class UserService implements UserDetailsService {
 
     }
 
+    @Transactional
+    public void insertUserAnswers(Long userId) {
+        User user = userRepository.getReferenceById(userId);
+    }
 
     public boolean checkPassword(String inputPassword, String memberPassword) {
         return passwordEncoder.matches(inputPassword, memberPassword);

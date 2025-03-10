@@ -32,7 +32,8 @@ public class AssessmentService {
     }
 
     public Long getAssessmentUserCount(Long id) {
-        return userRepository.countByAssessmentId(id);
+        return userRepository.countByInspectionIdx(id);
+        //return userRepository.countByAssessmentId(id);
     }
 
     public List<Assessment> getAllAssessments() {
